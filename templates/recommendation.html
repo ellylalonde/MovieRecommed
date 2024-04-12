@@ -12,6 +12,13 @@
         <ul>
             {% for movie in movies_data %}
                 <li>{{ movie.original_title }} - {{ movie.release_date }}</li>
+                
+                <ul>
+                    <li>Synopsis:</li>
+                    <ul>
+                        <li>{{ movie.overview }}</li>
+                    </ul>
+                </ul>
                 <ul>
                     <li>Genre:</li>
                     <ul>
@@ -23,6 +30,8 @@
                 </ul>
             {% endfor %}
         </ul>
+        <br />
+        <br />
     {% else %}
         <p>No movies found based on your preferences.</p>
     {% endif %}

@@ -23,10 +23,8 @@ def recommendation():
         genre = request.form['genre']
         min_rating = float(request.form['min_rating'])
         min_year = int(request.form['release_year'])
-        # common_words = ['the', 'of', 'and', 'to', 'in', 'a', 'is', 'it', 'you', 'that', 'I', 'we', 'me']
 
         tmdb_api_key = '309a6b31fde795ba3283ca1bf5e9c22f' # TMDB API Key
-        #  omdb_api_key = 'b1072873'  # OMDB API Key
 
         # Creates array where genre names will be stored
         genre_names = []
@@ -42,10 +40,6 @@ def recommendation():
             # Change genre numbers attached to each movie into genre names
             genre_names.append(translate_genre_ids_to_names(result["genre_ids"], genres_translated))
 
-            # for result in search_results:
-            #     complete_results.append(result)
-
-        #response = requests.get(omdb_url)
 
         movies_data, genre_names = filter_movies_by_genre(search_results, genre_names, genre)
         movies_data = filter_movies_by_min_rating(movies_data, min_rating)
