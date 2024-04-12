@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation</title>
+</head>
+<body>
+        <h1>Personalized Movie Recommendation</h1>
+
+    {% if movies_data %}
+        <ul>
+            {% for movie in movies_data %}
+                <li>{{ movie.original_title }} - {{ movie.release_date }}</li>
+                <ul>
+                    <li>Genre:</li>
+                    <ul>
+                        {% for genre in genres[ movies_data.index(movie) ] %}
+                            <li>{{ genre }}</li>
+                        {% endfor %}
+                    </ul>
+                    <li>User Rating: {{ movie.vote_average }}</li>
+                </ul>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies found based on your preferences.</p>
+    {% endif %}
+</body>
+</html>
